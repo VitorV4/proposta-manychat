@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proposta de Automação ManyChat</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Warm Neutral (Stone, Slate, Emerald) -->
+    <!-- Application Structure Plan: A single-page application with a sticky top navigation bar linking to sections: 'Início', 'Benefícios', 'Fases do Projeto', and 'Investimento'. This structure provides a linear, story-like flow from the 'why' to the 'how much', making the proposal easy to digest. The 'Fases do Projeto' section uses tabs to separate the initial scope from future improvements, preventing information overload and showing a clear roadmap. An interactive pricing calculator is included for clarity on costs. -->
+    <!-- Visualization & Content Choices: Benefits -> Goal: Inform -> Cards with Icons (Unicode) -> Hover for detail -> Justification: Visually engaging and scannable. Project Scope -> Goal: Organize -> Tabbed Interface -> Click to switch content -> Justification: Shows clear project progression without overwhelming the user. Costs -> Goal: Inform/Compare -> Interactive Pricing Table -> Toggle for AI add-on -> Justification: Clearly demonstrates the value and cost of the AI feature. No charts were used as the data is simple and better presented through interactive HTML. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* slate-50 */
+        }
+        .nav-link.active {
+            color: #10b981; /* emerald-500 */
+            font-weight: 600;
+        }
+        .tab.active {
+            background-color: #10b981; /* emerald-500 */
+            color: white;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        /* Custom Toggle Switch */
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        input:checked + .slider {
+            background-color: #10b981;
+        }
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+    </style>
+</head>
+<body class="text-slate-700">
+
+    <!-- Header & Navigation -->
+    <header id="header" class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-xl font-bold text-slate-800">Proposta ManyChat</h1>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#benefits" class="nav-link text-slate-600 hover:text-emerald-500 transition-colors">Benefícios</a>
+                <a href="#phases" class="nav-link text-slate-600 hover:text-emerald-500 transition-colors">Fases do Projeto</a>
+                <a href="#investment" class="nav-link text-slate-600 hover:text-emerald-500 transition-colors">Investimento</a>
+            </nav>
+            <a href="#investment" class="bg-emerald-500 text-white px-4 py-2 rounded-lg hover:bg-emerald-600 transition-colors hidden md:inline-block">Ver Custos</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-8 md:py-16">
+
+        <!-- Hero Section -->
+        <section id="hero" class="text-center mb-16 md:mb-24">
+            <h2 class="text-3xl md:text-5xl font-bold text-slate-800 mb-4">Automação e Otimização com ManyChat</h2>
+            <p class="text-lg md:text-xl max-w-3xl mx-auto text-slate-600">Uma proposta para aprimorar a experiência do cliente, otimizar processos e impulsionar a conversão de leads para agendamento de exames de vista.</p>
+        </section>
+
+        <!-- Benefits Section -->
+        <section id="benefits" class="mb-16 md:mb-24 scroll-mt-20">
+            <div class="text-center mb-12">
+                <h3 class="text-2xl md:text-3xl font-bold text-slate-800">Benefícios da Implementação</h3>
+                <p class="text-md text-slate-500 mt-2">Vantagens estratégicas para a comunicação e operação do seu negócio.</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all">
+                    <span class="text-4xl">❤️</span>
+                    <h4 class="font-bold text-lg text-slate-800 mt-4 mb-2">Experiência do Cliente 24/7</h4>
+                    <p class="text-slate-600 text-sm">Respostas instantâneas e consistentes a qualquer hora, elevando a satisfação e a percepção da marca.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all">
+                    <span class="text-4xl">🎯</span>
+                    <h4 class="font-bold text-lg text-slate-800 mt-4 mb-2">Captação de Leads Aprimorada</h4>
+                    <p class="text-slate-600 text-sm">Coleta e qualificação automática de leads, direcionando contatos mais preparados para a equipe de vendas.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all">
+                    <span class="text-4xl">🚀</span>
+                    <h4 class="font-bold text-lg text-slate-800 mt-4 mb-2">Escalabilidade de Campanhas</h4>
+                    <p class="text-slate-600 text-sm">Envio de mensagens segmentadas em escala, otimizando o ROI de marketing com menor custo operacional.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all">
+                    <span class="text-4xl">📈</span>
+                    <h4 class="font-bold text-lg text-slate-800 mt-4 mb-2">Aumento do Engajamento</h4>
+                    <p class="text-slate-600 text-sm">Interações diretas e consistentes que o algoritmo do Instagram valoriza, aumentando a visibilidade do perfil.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Phases Section -->
+        <section id="phases" class="mb-16 md:mb-24 scroll-mt-20">
+            <div class="text-center mb-12">
+                <h3 class="text-2xl md:text-3xl font-bold text-slate-800">Fases do Projeto</h3>
+                <p class="text-md text-slate-500 mt-2">Um roteiro claro da implementação inicial até as otimizações futuras.</p>
+            </div>
+            
+            <!-- Tabs -->
+            <div class="flex justify-center mb-8 border-b border-slate-200">
+                <button class="tab active px-6 py-3 font-semibold text-slate-600 transition-colors" onclick="switchTab('initial')">Fase 1: Implementação Inicial</button>
+                <button class="tab px-6 py-3 font-semibold text-slate-600 transition-colors" onclick="switchTab('future')">Fase 2: Otimizações Futuras</button>
+            </div>
+
+            <!-- Tab Content -->
+            <div id="initial" class="tab-content active">
+                <div class="bg-white p-8 rounded-xl shadow-lg">
+                    <h4 class="font-bold text-xl text-slate-800 mb-4">Escopo Inicial: Foco em Conversão</h4>
+                    <ul class="space-y-4 text-slate-600">
+                        <li class="flex items-start">
+                            <span class="text-emerald-500 font-bold mr-3">✓</span>
+                            <div><strong>Resposta Padrão (Saudação):</strong> Configuração de uma mensagem de boas-vindas automática para direcionar o usuário.</div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-emerald-500 font-bold mr-3">✓</span>
+                            <div><strong>Automação de Comentários:</strong> Detecção de palavras-chave em comentários para iniciar uma conversa privada (DM) de forma proativa.</div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-emerald-500 font-bold mr-3">✓</span>
+                            <div><strong>Fluxos de Conversão na DM:</strong> Desenvolvimento de um fluxo conversacional para captar interessados em agendar exames, solicitando nome, e-mail e telefone, e enviando os dados para o seu banco de leads.</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="future" class="tab-content">
+                <div class="bg-white p-8 rounded-xl shadow-lg">
+                    <h4 class="font-bold text-xl text-slate-800 mb-4">Melhorias Futuras: Inteligência e Retenção</h4>
+                     <ul class="space-y-4 text-slate-600">
+                        <li class="flex items-start">
+                            <span class="text-emerald-500 font-bold mr-3">✓</span>
+                            <div><strong>Respostas com IA:</strong> Integração de Inteligência Artificial para um atendimento mais natural e personalizado, compreendendo intenções complexas.</div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-emerald-500 font-bold mr-3">✓</span>
+                            <div><strong>Automação de Dúvidas com CTA:</strong> Respostas automáticas a perguntas frequentes (endereços, tipos de exame) seguidas de uma chamada para ação (CTA) para agendamento.</div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-emerald-500 font-bold mr-3">✓</span>
+                            <div><strong>Lembretes e E-mail Marketing:</strong> Envio de lembretes de agendamento e integração com plataformas de e-mail para nutrição e retenção de clientes.</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Investment Section -->
+        <section id="investment" class="scroll-mt-20">
+            <div class="text-center mb-12">
+                <h3 class="text-2xl md:text-3xl font-bold text-slate-800">Investimento</h3>
+                <p class="text-md text-slate-500 mt-2">Estrutura de custos transparente para o plano Pro com IA.</p>
+            </div>
+            <div class="max-w-2xl mx-auto bg-white rounded-xl shadow-lg p-8">
+                <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+                    <div>
+                        <h4 class="font-bold text-xl text-slate-800">Plano ManyChat Pro + IA</h4>
+                        <p class="text-slate-600 mt-2">Acesso a funcionalidades avançadas do plano Pro e o complemento de IA.</p>
+                    </div>
+                    <div class="bg-slate-50 p-6 rounded-lg text-center">
+                        <p class="text-slate-500 text-sm">Investimento Mensal</p>
+                        <p class="text-4xl font-bold text-emerald-600 my-2" id="total-cost">
+                            R$ 299/mês
+                        </p>
+                        <p class="text-xs text-slate-400">*(valor escalonável do plano Pro a partir de US$15/mês)</p>
+                    </div>
+                </div>
+                <div class="mt-8 pt-6 border-t border-slate-200">
+                    <p class="text-sm text-slate-600"><strong>Conclusão:</strong> Para implementar as melhorias e funcionalidades de IA descritas nesta proposta, como o atendimento mais dinâmico e a compreensão de intenções complexas, o investimento no plano ManyChat Pro e no complemento de IA, que custa R$299 por mês, é essencial. Este gasto é fundamental para a nossa estratégia de otimização e conversão.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-slate-800 text-white mt-16 md:mt-24">
+        <div class="container mx-auto px-6 py-8 text-center">
+            <p>&copy; 2025 - Proposta de Automação ManyChat. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Tab switching logic
+        function switchTab(tabId) {
+            const tabs = document.querySelectorAll('.tab');
+            const contents = document.querySelectorAll('.tab-content');
+
+            tabs.forEach(tab => tab.classList.remove('active'));
+            contents.forEach(content => content.classList.remove('active'));
+
+            document.querySelector(`.tab[onclick="switchTab('${tabId}')"]`).classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+        }
+
+        // Active nav link on scroll
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav a');
+            const headerHeight = document.getElementById('header').offsetHeight;
+
+            window.onscroll = () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - headerHeight - 20;
+                    if (pageYOffset >= sectionTop) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('active');
+                    }
+                });
+            };
+        });
+    </script>
+</body>
+</html>
